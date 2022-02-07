@@ -3,6 +3,10 @@ package com.tenniscourts.reservations;
 import com.tenniscourts.config.persistence.BaseEntity;
 import com.tenniscourts.guests.Guest;
 import com.tenniscourts.schedules.Schedule;
+import com.tenniscourts.tenniscourts.TennisCourt;
+import java.util.List;
+import javax.persistence.ElementCollection;
+import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -42,4 +46,8 @@ public class Reservation extends BaseEntity<Long> {
     private ReservationStatus reservationStatus = ReservationStatus.READY_TO_PLAY;
 
     private BigDecimal refundValue;
+
+    @NotNull
+    @OneToMany
+    private List<TennisCourt> tennisCourtList;
 }
